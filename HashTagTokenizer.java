@@ -35,21 +35,20 @@ public class HashTagTokenizer {
 
 	public static void breakHashTag(String hashtag, String[] dictionary) 
 	{
+		hashtag = hashtag.toLowerCase();
 		// Base case: do nothing (return) if hashtag is an empty string.
-		if (hashtag.isEmpty()) 
+        if (hashtag.isEmpty()) 
 		{
             return;
         }
-		for (int i = 0; i < dictionary.length; i++)
+		for (int i = 1; i <= hashtag.length(); i++)
 		{
-			if (dictionary[i].equals(hashtag.substring(0, i)))
+			if (existInDictionary(hashtag.substring(0, i),dictionary))
 			{
-				System.out.println(hashtag.substring(0, i));
+				System.out.println(hashtag.substring(0,i));
 				breakHashTag(hashtag.substring(i), dictionary);
 				return;
 			}
 		}
-		
-    }
-
+	}
 }
